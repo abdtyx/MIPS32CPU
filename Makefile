@@ -1,12 +1,14 @@
-TARGET = testbench
+MAIN = testbench
+BUILD = build
+SRC = src
 
-all: src vvp
+all: v vvp
 
-src:
-	iverilog $(TARGET).v -o $(TARGET).vvp
+v: $(SRC)/*.v
+	iverilog -o $(BUILD)/$(MAIN).vvp -I $(SRC) $^
 
 vvp:
-	vvp $(TARGET).vvp
+	cd $(BUILD) && vvp $(MAIN).vvp
 
 clean:
 	rm -rf *.vcd *.vvp

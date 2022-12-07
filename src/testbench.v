@@ -4,9 +4,17 @@ module testbench;
     parameter CLK_FREQ = 100;  // 100MHz
     parameter CLK_CYCLE = 1e9 / (CLK_FREQ * 1e6);
 
-    reg clk;
+    reg clk, rst;
+
+    top t(
+        .clk(clk),
+        .rst(rst)
+    );
+
     initial begin
-        clk = 1'b0;
+        clk <= 1'b0;
+        rst = 1'b1;
+        rst <= #20 1'b0;
     end
     always begin
         # (CLK_CYCLE / 2) clk = ~clk;
@@ -23,5 +31,6 @@ module testbench;
         $dumpfile("wave.vcd");
         $dumpvars(0, testbench);
     end
+
 
 endmodule
