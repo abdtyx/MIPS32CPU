@@ -6,7 +6,8 @@ module alu #(
     input wire[W-1:0] Op1,
     input wire[W-1:0] Op2,
     input wire[`ALUCTRL_LEN-1:0] ALUCtrl,
-    output wire[W-1:0] Res
+    output wire[W-1:0] Res,
+    output wire z
 );
     reg [W-1:0] r;
     always @(*) begin
@@ -26,5 +27,6 @@ module alu #(
         endcase
     end
     assign Res = r;
+    assign z = (Op1 == Op2 ? 1 : 0);
 
 endmodule

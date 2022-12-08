@@ -6,6 +6,10 @@
 `define FUNCT_LEN 6
 `define REGADDR_LEN 5
 
+// memory size
+`define INST_MEM_SIZE 1024
+`define DATA_MEM_SIZE 65536
+
 // R type
 `define R 6'b000000
 
@@ -24,3 +28,7 @@
 `define AND 3'b000
 `define OR 3'b001
 `define SLT 3'b011
+
+// file
+`define DATA_MEM "../data/dmem.data"
+`define INST_MEM "../data/imem.text"

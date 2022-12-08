@@ -12,10 +12,21 @@ module top #(
         .w(1),
         .W_Data(123),
         .W_Reg(2),
-        .R_Reg1(3),
+        .R_Reg1(2),
         .R_Reg2(4),
         .R_Data1(w1),
         .R_Data2(w2)
     );
+    reg[W-1:0] nin = 0;
+    wire[W-1:0] nout;
+    pc _pc(
+        .clk(clk),
+        .NextAddr(nin),
+        .Addr(nout)
+    );
+
+    always @(posedge clk) begin
+        nin += 4;
+    end
 
 endmodule
