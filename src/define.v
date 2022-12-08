@@ -4,6 +4,7 @@
 `define OPCODE_LEN 6
 `define ALUOP_LEN 2
 `define FUNCT_LEN 6
+`define REGADDR_LEN 5
 
 // R type
 `define R 6'b000000

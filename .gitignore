@@ -1,3 +1,6 @@
 *.vvp
 *.vcd
 build
+.vscode
+*.cpp
+*.out
