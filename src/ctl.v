@@ -123,3 +123,18 @@ module alucu (
     assign ALUCtrl = sig;
 
 endmodule
+
+module mux #(
+    parameter LEN = `WORD_LEN
+) (
+    input wire[LEN-1:0] Data0,
+    input wire[LEN-1:0] Data1,
+    input wire sig,
+    output reg[LEN-1:0] Data
+);
+
+    always @(*) begin
+        Data <= sig ? Data1 : Data0;
+    end
+
+endmodule

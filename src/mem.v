@@ -31,8 +31,7 @@ module datamem #(
     input wire clk, rst,
     input wire[W-1:0] Addr,
     input wire[W-1:0] W_Data,
-    input wire[W-1:0] W_Enable,
-    input wire[W-1:0] R_Enable,
+    input wire W_Enable, R_Enable,
     output reg[W-1:0] R_Data
 );
 
