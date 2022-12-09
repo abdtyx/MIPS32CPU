@@ -10,19 +10,36 @@ module regfile #(
     output reg[W-1:0] R_Data1,
     output reg[W-1:0] R_Data2
 );
-    reg[W-1:0] Regs[`REGADDR_LEN-1:0];
+    reg[W-1:0] Regs[W-1:0];
+
+    initial begin
+        for (integer i = 0; i < W; i++) begin
+            Regs[i] <= 0;
+        end
+    end
+
     always @(posedge clk) begin
-        if (w) begin
+        if (rst) begin
+            R_Data1 <= 0;
+            R_Data2 <= 0;
+        end
+        else if (w) begin
             Regs[W_Reg] <= W_Data;
         end
     end
 
     always @(R_Reg1) begin
-        R_Data1 = Regs[R_Reg1];
+        if (!rst)
+            R_Data1 <= Regs[R_Reg1];
+        else
+            R_Data1 <= 0;
     end
 
     always @(R_Reg2) begin
-        R_Data2 = Regs[R_Reg2];
+        if (!rst)
+            R_Data2 <= Regs[R_Reg2];
+        else
+            R_Data2 <= 0;
     end
 
 endmodule

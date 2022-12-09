@@ -12,6 +12,11 @@ module pc #(
     end
 
     always @(posedge clk) begin
-        Addr <= r;
+        if (rst) begin
+            r <= 0;
+        end
+        else begin
+            Addr <= r;
+        end
     end
 endmodule

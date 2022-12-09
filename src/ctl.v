@@ -72,6 +72,17 @@ module mcu (
                 jump = 1;
                 aluop = `ALUOP_LEN'b00;
             end
+            default: begin
+                regdst = 0;
+                regwr = 0;
+                alusrc = 0;
+                memrd = 0;
+                memwr = 0;
+                memtoreg = 0;
+                branch = 0;
+                jump = 0;
+                aluop = `ALUOP_LEN'b00;
+            end
         endcase
     end
 

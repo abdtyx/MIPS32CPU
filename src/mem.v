@@ -16,6 +16,7 @@ module instmem #(
             $display("%h", mem[i]);
         end
         */
+        Inst <= 0;
     end
 
     always @(Addr) begin
@@ -43,16 +44,23 @@ module datamem #(
             $display("%h", mem[i]);
         end
         */
+        R_Data <= 0;
     end
 
     always @(Addr) begin
-        if (R_Enable) begin
+        if (rst) begin
+            R_Data <= 0;
+        end
+        else if (R_Enable) begin
             R_Data <= mem[Addr[17:2]];
         end
     end
 
     always @(posedge clk) begin
-        if (W_Enable) begin
+        if (rst) begin
+            R_Data <= 0;
+        end
+        else if (W_Enable) begin
             mem[Addr[17:2]] <= W_Data;
         end
     end
